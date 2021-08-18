@@ -12,5 +12,48 @@
     ></script>
   </head>
 
-  <body></body>
+  <body>
+    <header id="header">
+      <h2>Etch-a-Sketch</h2>
+    </header>
+
+    <main>
+      <div id="tools">
+        <div>
+          <input type="radio" name="tool" id="draw" checked />
+          <label for="draw" title="Draw"><i class="fas fa-pen"></i></label>
+        </div>
+
+        <div>
+          <input type="radio" name="tool" id="erase" />
+          <label for="erase" title="Erase"><i class="fas fa-eraser"></i></label>
+        </div>
+
+        <div>
+          <input type="radio" name="tool" id="fill" />
+          <label for="fill" title="Fill"
+            ><i class="fas fa-fill-drip"></i
+          ></label>
+        </div>
+
+        <div>
+          <input type="radio" name="tool" id="eyedropper" />
+          <label for="eyedropper" title="Eyedropper"
+            ><i class="fas fa-eye-dropper"></i
+          ></label>
+        </div>
+      </div>
+
+      <div id="clear">
+        <button>Clear</button>
+      </div>
+    </main>
+
+    <footer id="footer">
+      <p>
+        Designed by
+        <a target="_blank" href="https://github.com/jgeng98">jgeng98</a>
+      </p>
+    </footer>
+  </body>
 </html>
