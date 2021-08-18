@@ -58,13 +58,20 @@
 
         <div id="grid-size">
           <p>Grid size:</p>
-          <input
-            type="number"
-            id="grid-length"
-            name="length"
-            min="1"
-            max="100"
-          />
+          <div class="size">
+            <input type="radio" name="grid-size" id="sm-grid" />
+            <label for="sm-grid">Small</label>
+          </div>
+
+          <div class="size">
+            <input type="radio" name="grid-size" id="med-grid" checked />
+            <label for="med-grid">Medium</label>
+          </div>
+
+          <div class="size">
+            <input type="radio" name="grid-size" id="lg-grid" />
+            <label for="lg-grid">Large</label>
+          </div>
         </div>
 
         <div id="toggle-grid">

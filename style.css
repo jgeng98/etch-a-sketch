@@ -8,7 +8,7 @@
 
 body {
   background-color: #04405a;
-  padding: 50px 120px;
+  padding: 8vh 10vw;
   height: 100vh;
   font-family: "Open Sans", sans-serif;
 }
@@ -32,8 +32,8 @@ main {
 
 #canvas {
   display: grid;
-  height: 75vh;
-  aspect-ratio: 1;
+  height: 80vh;
+  /* grid-template-columns: repeat(44, auto); */
 }
 
 #tools input[type="radio"] {
@@ -57,21 +57,22 @@ main {
   display: flex;
   height: 100%;
   align-items: center;
+  font-size: 1.3em;
 }
 
 #tools button {
   border: none;
   padding: 5px;
   border-radius: 5px;
-  background-color: #fecf57;
   font-size: 15px;
   color: #04405a;
   cursor: pointer;
+  font-family: "Open Sans", sans-serif;
 }
 
 #tools .tool {
   color: #04405a;
-  background-color: #fecf57;
+  background-color: white;
   border-radius: 5px;
   margin: 5px;
   padding: 0;
@@ -82,8 +83,19 @@ main {
   justify-content: center;
 }
 
+#tools .size {
+  color: #04405a;
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 0px;
+  font-size: 15px;
+}
+
 .tool,
-.tool * {
+.tool *,
+.size,
+.size * {
   cursor: pointer;
 }
 
@@ -95,8 +107,20 @@ main {
   align-items: center;
 }
 
-.tool input[type="radio"]:checked + label {
-  border: 2px solid black;
+.size label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4.5px;
+}
+
+/* change appearance of active radio button */
+.tool input[type="radio"]:checked + label,
+#grid-size input[type="radio"]:checked + label {
+  background-color: #fecf57;
+  color: #04405a;
+  border-radius: 5px;
 }
 
 #toggle-grid,
@@ -107,13 +131,7 @@ main {
 
 #grid-size {
   display: flex;
-}
-
-#grid-length {
-  margin-left: 10px;
-  width: 60px;
-  border-radius: 5px;
-  border: none;
+  align-items: center;
 }
 
 #footer {
@@ -122,7 +140,7 @@ main {
   align-items: center;
   color: white;
   font-size: 1.3em;
-  padding: 50px;
+  height: 8vh;
 }
 
 #footer a {
