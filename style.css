@@ -8,8 +8,9 @@
 
 body {
   background-color: #04405a;
-  padding: 50px 30px;
+  padding: 50px 120px;
   height: 100vh;
+  font-family: "Open Sans", sans-serif;
 }
 
 #header {
@@ -24,6 +25,15 @@ body {
 main {
   background-color: #d30021;
   border-radius: 0px 0px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#canvas {
+  display: grid;
+  height: 75vh;
+  aspect-ratio: 1;
 }
 
 #tools input[type="radio"] {
@@ -32,8 +42,28 @@ main {
   width: 0;
 }
 
+#tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+#tools div {
+  padding: 15px;
+}
+
+#clear {
+  display: grid;
+}
+
+#clear button {
+  border: none;
+  padding: 5px;
+  border-radius: 20px;
+}
+
 #footer {
-  font-family: "Open Sans", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
