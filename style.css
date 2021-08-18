@@ -46,21 +46,74 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2em;
+  height: 88px;
 }
 
 #tools div {
   padding: 15px;
 }
 
-#clear {
-  display: grid;
+#icons {
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 
-#clear button {
+#tools button {
   border: none;
   padding: 5px;
-  border-radius: 20px;
+  border-radius: 5px;
+  background-color: #fecf57;
+  font-size: 15px;
+  color: #04405a;
+  cursor: pointer;
+}
+
+#tools .tool {
+  color: #04405a;
+  background-color: #fecf57;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 0;
+  aspect-ratio: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool,
+.tool * {
+  cursor: pointer;
+}
+
+.tool label {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool input[type="radio"]:checked + label {
+  border: 2px solid black;
+}
+
+#toggle-grid,
+#clear {
+  display: flex;
+  align-items: center;
+}
+
+#grid-size {
+  display: flex;
+}
+
+#grid-length {
+  margin-left: 10px;
+  width: 60px;
+  border-radius: 5px;
+  border: none;
 }
 
 #footer {

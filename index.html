@@ -21,39 +21,54 @@
       <div id="canvas"></div>
 
       <div id="tools">
-        <div class="tool">
-          <input type="radio" name="tool" id="draw" checked />
-          <label for="draw" title="Draw"><i class="fas fa-pen"></i></label>
-        </div>
+        <div id="icons">
+          <div class="tool">
+            <input type="radio" name="tool" id="draw" checked />
+            <label for="draw" title="Draw"><i class="fas fa-pen"></i></label>
+          </div>
 
-        <div class="tool">
-          <input type="radio" name="tool" id="erase" />
-          <label for="erase" title="Erase"><i class="fas fa-eraser"></i></label>
-        </div>
+          <div class="tool">
+            <input type="radio" name="tool" id="erase" />
+            <label for="erase" title="Erase"
+              ><i class="fas fa-eraser"></i
+            ></label>
+          </div>
 
-        <div class="tool">
-          <input type="radio" name="tool" id="fill" />
-          <label for="fill" title="Fill"
-            ><i class="fas fa-fill-drip"></i
-          ></label>
-        </div>
+          <div class="tool">
+            <input type="radio" name="tool" id="fill" />
+            <label for="fill" title="Fill"
+              ><i class="fas fa-fill-drip"></i
+            ></label>
+          </div>
 
-        <div class="tool">
-          <input type="radio" name="tool" id="eyedropper" />
-          <label for="eyedropper" title="Eyedropper"
-            ><i class="fas fa-eye-dropper"></i
-          ></label>
-        </div>
+          <div class="tool">
+            <input type="radio" name="tool" id="eyedropper" />
+            <label for="eyedropper" title="Eyedropper"
+              ><i class="fas fa-eye-dropper"></i
+            ></label>
+          </div>
 
-        <div class="tool">
-          <input type="radio" name="tool" id="rainbow" />
-          <label for="rainbow" title="Rainbow"
-            ><i class="fas fa-rainbow"></i
-          ></label>
+          <div class="tool">
+            <input type="radio" name="tool" id="rainbow" />
+            <label for="rainbow" title="Rainbow"
+              ><i class="fas fa-rainbow"></i
+            ></label>
+          </div>
         </div>
 
         <div id="grid-size">
-          <p>Grid size</p>
+          <p>Grid size:</p>
+          <input
+            type="number"
+            id="grid-length"
+            name="length"
+            min="1"
+            max="100"
+          />
+        </div>
+
+        <div id="toggle-grid">
+          <button>Toggle grid</button>
         </div>
 
         <div id="clear">
