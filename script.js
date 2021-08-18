@@ -1,9 +1,25 @@
-function createGrid(length) {
+function getGridSize(size) {
+  let gridCSS;
+  switch (size) {
+    case 352:
+      gridCSS = "repeat(22, auto)";
+      break;
+    case 1408:
+      gridCSS = "repeat(44, auto)";
+      break;
+    case 5632:
+      gridCSS = "repeat(88, auto)";
+      break;
+  }
+
+  return gridCSS;
+}
+
+function createGrid(size = 32 * 44) {
   // erases current grid and resets the rows and columns
   canvas.textContent = "";
 
-  canvas.style.gridTemplateColumns = `repeat(${length}, 1fr)`;
-  canvas.style.gridTemplateRows = `repeat(${length}, 1fr)`;
+  canvas.style.gridTemplateColumns = getGridSize(size);
 
   // create pixel in the grid
   const pixelDiv = document.createElement("div");
@@ -11,7 +27,7 @@ function createGrid(length) {
   pixelDiv.style.backgroundColor = "white";
 
   // clones the above pixel and adds it to the canvas
-  for (let i = 0; i < length ** 2; i++) {
+  for (let i = 0; i < size; i++) {
     let divClone = pixelDiv.cloneNode(true);
     canvas.append(divClone);
   }
@@ -19,4 +35,4 @@ function createGrid(length) {
 
 const canvas = document.querySelector("#canvas");
 
-createGrid(10);
+createGrid();
