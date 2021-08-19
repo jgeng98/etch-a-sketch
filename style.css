@@ -135,6 +135,21 @@ main {
   align-items: center;
 }
 
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.deco {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: white;
+  margin: 1vw;
+}
+
 #footer {
   display: flex;
   justify-content: center;

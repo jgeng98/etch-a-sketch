@@ -20,67 +20,59 @@
     <main>
       <div id="canvas"></div>
 
-      <div id="tools">
-        <div id="icons">
-          <div class="tool">
-            <input type="radio" name="tool" id="draw" checked />
-            <label for="draw" title="Draw"><i class="fas fa-pen"></i></label>
+      <div id="controls">
+        <div class="deco"></div>
+
+        <div id="tools">
+          <div id="icons">
+            <div class="tool">
+              <input type="radio" name="tool" id="draw" checked />
+              <label for="draw" title="Draw"><i class="fas fa-pen"></i></label>
+            </div>
+
+            <div class="tool">
+              <input type="radio" name="tool" id="erase" />
+              <label for="erase" title="Erase"
+                ><i class="fas fa-eraser"></i
+              ></label>
+            </div>
+
+            <div class="tool">
+              <input type="radio" name="tool" id="rainbow" />
+              <label for="rainbow" title="Rainbow"
+                ><i class="fas fa-rainbow"></i
+              ></label>
+            </div>
           </div>
 
-          <div class="tool">
-            <input type="radio" name="tool" id="erase" />
-            <label for="erase" title="Erase"
-              ><i class="fas fa-eraser"></i
-            ></label>
+          <div id="grid-size">
+            <p>Grid size:</p>
+            <div class="size">
+              <input type="radio" name="grid-size" id="sm-grid" />
+              <label for="sm-grid">Small</label>
+            </div>
+
+            <div class="size">
+              <input type="radio" name="grid-size" id="med-grid" checked />
+              <label for="med-grid">Medium</label>
+            </div>
+
+            <div class="size">
+              <input type="radio" name="grid-size" id="lg-grid" />
+              <label for="lg-grid">Large</label>
+            </div>
           </div>
 
-          <div class="tool">
-            <input type="radio" name="tool" id="fill" />
-            <label for="fill" title="Fill"
-              ><i class="fas fa-fill-drip"></i
-            ></label>
+          <div>
+            <button id="toggle">Toggle grid</button>
           </div>
 
-          <div class="tool">
-            <input type="radio" name="tool" id="eyedropper" />
-            <label for="eyedropper" title="Eyedropper"
-              ><i class="fas fa-eye-dropper"></i
-            ></label>
-          </div>
-
-          <div class="tool">
-            <input type="radio" name="tool" id="rainbow" />
-            <label for="rainbow" title="Rainbow"
-              ><i class="fas fa-rainbow"></i
-            ></label>
-          </div>
-        </div>
-
-        <div id="grid-size">
-          <p>Grid size:</p>
-          <div class="size">
-            <input type="radio" name="grid-size" id="sm-grid" />
-            <label for="sm-grid">Small</label>
-          </div>
-
-          <div class="size">
-            <input type="radio" name="grid-size" id="med-grid" checked />
-            <label for="med-grid">Medium</label>
-          </div>
-
-          <div class="size">
-            <input type="radio" name="grid-size" id="lg-grid" />
-            <label for="lg-grid">Large</label>
+          <div>
+            <button id="clear">Clear</button>
           </div>
         </div>
 
-        <div>
-          <button id="toggle">Toggle grid</button>
-        </div>
-
-        <div>
-          <button id="clear">Clear</button>
-        </div>
+        <div class="deco"></div>
       </div>
     </main>
 
