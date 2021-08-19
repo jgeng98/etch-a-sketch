@@ -69,6 +69,11 @@ function createGrid(size = 32 * 44, gridColumns = "repeat(44, auto)") {
   pixelDiv.classList.add("pixel");
   pixelDiv.style.backgroundColor = "white";
 
+  // if grid was already toggled on, keep it showing
+  if (showGrid) {
+    pixelDiv.style.border = "1px solid rgba(0, 0, 0, 0.25)";
+  }
+
   // clones the above pixel and adds it to the canvas
   for (let i = 0; i < size; i++) {
     let divClone = pixelDiv.cloneNode(true);
