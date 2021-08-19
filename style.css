@@ -32,9 +32,15 @@ main {
 }
 
 #canvas {
+  background-color: white;
   display: grid;
   height: 80vh;
   width: 70vw;
+}
+
+.pixel {
+  user-select: none;
+  border: 1px solid transparent;
 }
 
 .pixel:hover {

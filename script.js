@@ -72,33 +72,44 @@ function createGrid(size = 32 * 44, gridColumns = "repeat(44, auto)") {
     canvas.append(divClone);
   }
 
-  // select all the newly created pixels to use later
+  // select all the newly created pixels and adds event listeners to them
   pixels = document.querySelectorAll(".pixel");
+  addPixelEventListener();
 }
 
-function useTool() {
+function useTool(pixel) {
   // determines which tool is currently selected
   let currentTool = getSelectedTool();
 
   // calls the appropriate function depending on the selected tool
   switch (currentTool) {
     case Tools.PEN:
-      drawPixel();
+      drawPixel(pixel);
       break;
     case Tool.ERASER:
-      erasePixel();
+      erasePixel(pixel);
       break;
     case Tool.RAINBOW:
-      drawRainbowPixel();
+      drawRainbowPixel(pixel);
       break;
   }
 }
 
-function drawPixel() {}
+function drawPixel(pixel) {
+  // sets a "clicks" counter for each pixel
+  // sets it to the first "truthy" value, if both are "falsy", then the last operand is returned
+  pixel.clicks = (pixel.clicks || 0) + 1;
 
-function erasePixel() {}
+  // sets the background color of the pixel, increments the clicks counter, and sets the opacity depending on the number of clicks
+  // note: number of clicks here refers to the number of times the mouse has actually clicked down on the pixel AND the number of times the mouse has passed over the pixel while clicked down
+  pixel.style.backgroundColor = "#707070";
+  pixel.clicks += 1;
+  pixel.style.opacity = 0.2 * pixel.clicks;
+}
 
-function drawRainbowPixel() {}
+function erasePixel(pixel) {}
+
+function drawRainbowPixel(pixel) {}
 
 function toggleGrid() {
   // if grid is currently showing, get rid of the border on each pixel to toggle it off
@@ -123,12 +134,12 @@ createGrid();
 // event listeners
 // determines if the mouse is currently "clicked" down
 document.addEventListener("mousedown", () => {
-  mouseDown = false;
+  mouseDown = true;
 });
 
 // determines if the mouse has been "unclicked"
 document.addEventListener("mouseup", () => {
-  mouseDown = true;
+  mouseDown = false;
 });
 
 // event listeners for grid toggle and clear grid buttons
@@ -142,14 +153,17 @@ gridSizes.forEach((gridSize) => {
   });
 });
 
-// event listeners for each pixel in the grid
-pixels.forEach((pixel) => {
-  pixel.addEventListener("mousedown", (e) => {
-    useTool(e.currentTarget);
-  });
-  pixel.addEventListener("mouseenter", (e) => {
-    if (mouseDown) {
+// function to add event listeners to each pixel once they're created
+// used in createGrid function so that new event listeners are added every time the grid changes
+function addPixelEventListener() {
+  pixels.forEach((pixel) => {
+    pixel.addEventListener("mousedown", (e) => {
       useTool(e.currentTarget);
-    }
+    });
+    pixel.addEventListener("mouseenter", (e) => {
+      if (mouseDown) {
+        useTool(e.currentTarget);
+      }
+    });
   });
-});
+}
