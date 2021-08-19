@@ -2,6 +2,7 @@
 const canvas = document.querySelector("#canvas");
 const gridToggleButton = document.querySelector("#toggle");
 const clearGridButton = document.querySelector("#clear");
+const gridSizes = document.querySelectorAll("input[name='grid-size']");
 
 // enums
 const Tools = Object.freeze({
@@ -13,9 +14,9 @@ const Tools = Object.freeze({
 });
 
 const gridSize = Object.freeze({
-  SMALL: Symbol("Small"),
-  MEDIUM: Symbol("Medium"),
-  LARGE: Symbol("Large"),
+  SMALL: 16 * 22,
+  MEDIUM: 32 * 44,
+  LARGE: 64 * 88,
 });
 
 // event listeners
@@ -23,37 +24,45 @@ gridToggleButton.addEventListener("click", toggleGrid);
 
 clearGridButton.addEventListener("click", clearGrid);
 
+gridSizes.forEach((gridSize) => {
+  gridSize.addEventListener("change", (event) => {
+    console.log(event.currentTarget.id);
+    getSelectedGridSize(event.currentTarget.id);
+  });
+});
+
 // starting values
 let showGrid = false;
 let pixels;
 
 // etch-a-sketch functionality
-function getGridSize(size) {
+function getSelectedTool() {}
+
+function getSelectedGridSize(currentSizeID) {
   // sets the grid size, used in the createGrid function
-  let gridCSS;
-  switch (size) {
+  switch (currentSizeID) {
     // small grid size: 16x22
-    case 352:
-      gridCSS = "repeat(22, auto)";
+    case "sm-grid":
+      createGrid((size = 16 * 22), (gridColumns = "repeat(22, auto)"));
       break;
     // medium (default) grid size: 32x44
-    case 1408:
-      gridCSS = "repeat(44, auto)";
+    case "med-grid":
+      createGrid((size = 32 * 44), (gridColumns = "repeat(44, auto)"));
       break;
     // large grid size: 64x88
-    case 5632:
-      gridCSS = "repeat(88, auto)";
+    case "lg-grid":
+      createGrid((size = 64 * 88), (gridColumns = "repeat(88, auto)"));
       break;
   }
-
-  return gridCSS;
 }
 
-function createGrid(size = 32 * 44) {
+function createGrid(size = 32 * 44, gridColumns = "repeat(44, auto)") {
   // erases current grid and resets the rows and columns
   canvas.textContent = "";
 
-  canvas.style.gridTemplateColumns = getGridSize(size);
+  canvas.style.gridTemplateColumns = gridColumns;
+
+  console.log(canvas.style.gridTemplateColumns);
 
   // create pixel in the grid
   const pixelDiv = document.createElement("div");
