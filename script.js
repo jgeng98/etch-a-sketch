@@ -11,19 +11,9 @@ const Tools = Object.freeze({
   RAINBOW: Symbol("Rainbow"),
 });
 
-// event listeners
-gridToggleButton.addEventListener("click", toggleGrid);
-
-clearGridButton.addEventListener("click", clearGrid);
-
-gridSizes.forEach((gridSize) => {
-  gridSize.addEventListener("change", (event) => {
-    getSelectedGridSize(event.currentTarget.id);
-  });
-});
-
 // starting values
 let showGrid = false;
+let mouseDown;
 let pixels;
 
 // etch-a-sketch functionality
@@ -86,6 +76,30 @@ function createGrid(size = 32 * 44, gridColumns = "repeat(44, auto)") {
   pixels = document.querySelectorAll(".pixel");
 }
 
+function useTool() {
+  // determines which tool is currently selected
+  let currentTool = getSelectedTool();
+
+  // calls the appropriate function depending on the selected tool
+  switch (currentTool) {
+    case Tools.PEN:
+      drawPixel();
+      break;
+    case Tool.ERASER:
+      erasePixel();
+      break;
+    case Tool.RAINBOW:
+      drawRainbowPixel();
+      break;
+  }
+}
+
+function drawPixel() {}
+
+function erasePixel() {}
+
+function drawRainbowPixel() {}
+
 function toggleGrid() {
   // if grid is currently showing, get rid of the border on each pixel to toggle it off
   if (showGrid) {
@@ -105,3 +119,37 @@ function toggleGrid() {
 function clearGrid() {}
 
 createGrid();
+
+// event listeners
+// determines if the mouse is currently "clicked" down
+document.addEventListener("mousedown", () => {
+  mouseDown = false;
+});
+
+// determines if the mouse has been "unclicked"
+document.addEventListener("mouseup", () => {
+  mouseDown = true;
+});
+
+// event listeners for grid toggle and clear grid buttons
+gridToggleButton.addEventListener("click", toggleGrid);
+clearGridButton.addEventListener("click", clearGrid);
+
+// event listener for the selected grid size
+gridSizes.forEach((gridSize) => {
+  gridSize.addEventListener("change", (event) => {
+    getSelectedGridSize(event.currentTarget.id);
+  });
+});
+
+// event listeners for each pixel in the grid
+pixels.forEach((pixel) => {
+  pixel.addEventListener("mousedown", (e) => {
+    useTool(e.currentTarget);
+  });
+  pixel.addEventListener("mouseenter", (e) => {
+    if (mouseDown) {
+      useTool(e.currentTarget);
+    }
+  });
+});
