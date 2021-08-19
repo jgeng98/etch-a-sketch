@@ -35,9 +35,13 @@ main {
   display: grid;
   height: 80vh;
   width: 70vw;
-  /* grid-template-columns: repeat(44, auto); */
 }
 
+.pixel:hover {
+  border: 1px dotted #d30021;
+}
+
+/* remove default radio button appearance */
 #tools input[type="radio"] {
   opacity: 0;
   position: fixed;
@@ -124,12 +128,6 @@ main {
   background-color: #fecf57;
   color: #04405a;
   border-radius: 5px;
-}
-
-#toggle-grid,
-#clear {
-  display: flex;
-  align-items: center;
 }
 
 #grid-size {
