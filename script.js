@@ -8,15 +8,7 @@ const gridSizes = document.querySelectorAll("input[name='grid-size']");
 const Tools = Object.freeze({
   PEN: Symbol("Pen"),
   ERASER: Symbol("Eraser"),
-  FILL: Symbol("Fill"),
-  EYEDROPPER: Symbol("Eyedropper"),
   RAINBOW: Symbol("Rainbow"),
-});
-
-const gridSize = Object.freeze({
-  SMALL: 16 * 22,
-  MEDIUM: 32 * 44,
-  LARGE: 64 * 88,
 });
 
 // event listeners
@@ -26,7 +18,6 @@ clearGridButton.addEventListener("click", clearGrid);
 
 gridSizes.forEach((gridSize) => {
   gridSize.addEventListener("change", (event) => {
-    console.log(event.currentTarget.id);
     getSelectedGridSize(event.currentTarget.id);
   });
 });
@@ -36,7 +27,20 @@ let showGrid = false;
 let pixels;
 
 // etch-a-sketch functionality
-function getSelectedTool() {}
+function getSelectedTool() {
+  // determines which tool is currently selected
+  let selectedTool = document.querySelector("input[name='tool']:checked");
+
+  // returns the selected tool based on ID name
+  switch (selectedTool.id) {
+    case "draw":
+      return Tools.PEN;
+    case "erase":
+      return Tools.ERASER;
+    case "rainbow":
+      return Tools.RAINBOW;
+  }
+}
 
 function getSelectedGridSize(currentSizeID) {
   // sets the grid size, used in the createGrid function
@@ -62,8 +66,6 @@ function createGrid(size = 32 * 44, gridColumns = "repeat(44, auto)") {
 
   canvas.style.gridTemplateColumns = gridColumns;
 
-  console.log(canvas.style.gridTemplateColumns);
-
   // create pixel in the grid
   const pixelDiv = document.createElement("div");
   pixelDiv.classList.add("pixel");
@@ -80,6 +82,7 @@ function createGrid(size = 32 * 44, gridColumns = "repeat(44, auto)") {
     canvas.append(divClone);
   }
 
+  // select all the newly created pixels to use later
   pixels = document.querySelectorAll(".pixel");
 }
 
