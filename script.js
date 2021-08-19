@@ -3,6 +3,8 @@ const canvas = document.querySelector("#canvas");
 const gridToggleButton = document.querySelector("#toggle");
 const clearGridButton = document.querySelector("#clear");
 const gridSizes = document.querySelectorAll("input[name='grid-size']");
+const medGrid = document.querySelector("#med-grid");
+const drawTool = document.querySelector("#draw");
 
 // enums
 const Tools = Object.freeze({
@@ -20,10 +22,13 @@ const rainbowPalette = [
   "#915BA6",
 ];
 
-// starting values
+// starting values and setup
 let showGrid = false;
 let mouseDown;
 let pixels;
+medGrid.checked = true;
+drawTool.checked = true;
+createGrid();
 
 // etch-a-sketch functionality
 function getSelectedTool() {
@@ -145,9 +150,19 @@ function toggleGrid() {
   }
 }
 
-function clearGrid() {}
+function clearGrid() {
+  // determines which grid size is currently selected
+  let selectedGridSize = document.querySelector(
+    "input[name='grid-size']:checked"
+  );
 
-createGrid();
+  // redraws the current grid size again
+  getSelectedGridSize(selectedGridSize.id);
+
+  // resets the default tool and grid size
+  medGrid.checked = true;
+  drawTool.checked = true;
+}
 
 // event listeners
 // determines if the mouse is currently "clicked" down
