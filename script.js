@@ -11,6 +11,15 @@ const Tools = Object.freeze({
   RAINBOW: Symbol("Rainbow"),
 });
 
+const rainbowPalette = [
+  "#EE2F44",
+  "#F4AE1A",
+  "#EFD31A",
+  "#67BF6B",
+  "#518BC9",
+  "#915BA6",
+];
+
 // starting values
 let showGrid = false;
 let mouseDown;
@@ -86,10 +95,10 @@ function useTool(pixel) {
     case Tools.PEN:
       drawPixel(pixel);
       break;
-    case Tool.ERASER:
+    case Tools.ERASER:
       erasePixel(pixel);
       break;
-    case Tool.RAINBOW:
+    case Tools.RAINBOW:
       drawRainbowPixel(pixel);
       break;
   }
@@ -107,9 +116,18 @@ function drawPixel(pixel) {
   pixel.style.opacity = 0.2 * pixel.clicks;
 }
 
-function erasePixel(pixel) {}
+function erasePixel(pixel) {
+  // removes the background color and the opacity from the pixel
+  pixel.style.backgroundColor = "white";
+  pixel.style.opacity = 1;
+}
 
-function drawRainbowPixel(pixel) {}
+function drawRainbowPixel(pixel) {
+  // sets the background color of the pixel to a random color from the rainbow palette and the opacity to 1
+  let randomColor = Math.floor(Math.random() * rainbowPalette.length);
+  pixel.style.backgroundColor = rainbowPalette[randomColor];
+  pixel.style.opacity = 1;
+}
 
 function toggleGrid() {
   // if grid is currently showing, get rid of the border on each pixel to toggle it off
