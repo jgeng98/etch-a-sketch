@@ -118,13 +118,14 @@ function drawPixel(pixel) {
   // note: number of clicks here refers to the number of times the mouse has actually clicked down on the pixel AND the number of times the mouse has passed over the pixel while clicked down
   pixel.style.backgroundColor = "#707070";
   pixel.clicks += 1;
-  pixel.style.opacity = 0.2 * pixel.clicks;
+  pixel.style.opacity = 0.1 * pixel.clicks;
 }
 
 function erasePixel(pixel) {
   // removes the background color and the opacity from the pixel
   pixel.style.backgroundColor = "white";
   pixel.style.opacity = 1;
+  pixel.clicks = 0;
 }
 
 function drawRainbowPixel(pixel) {
@@ -132,6 +133,7 @@ function drawRainbowPixel(pixel) {
   let randomColor = Math.floor(Math.random() * rainbowPalette.length);
   pixel.style.backgroundColor = rainbowPalette[randomColor];
   pixel.style.opacity = 1;
+  pixel.clicks = 0;
 }
 
 function toggleGrid() {
